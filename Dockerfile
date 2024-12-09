@@ -38,12 +38,12 @@ ARG LIQUIDSOAP_VERSION
 ARG OPAM_PACKAGES="liquidsoap${LIQUIDSOAP_VERSION:+.$LIQUIDSOAP_VERSION} taglib mad lame vorbis cry samplerate ssl ffmpeg jemalloc"
 
 # add user for liquidsoap and create necessary directories
-RUN groupadd -g 999 radio && \
-    useradd -m -r -u 999 -s /bin/bash -g radio radio && \
+RUN groupadd -g 999 audio && \
+    useradd -m -r -u 999 -s /bin/bash -g broadcast audio && \
     mkdir /etc/liquidsoap /music && \
-    chown -R radio /etc/liquidsoap /music
+    chown -R broadcast:audio /etc/liquidsoap /music
 
-USER radio
+USER broadcast
 
 # setup opam
 RUN opam init -a -y --disable-sandboxing --comp 4.14.2
