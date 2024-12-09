@@ -38,7 +38,7 @@ ARG LIQUIDSOAP_VERSION
 ARG OPAM_PACKAGES="liquidsoap${LIQUIDSOAP_VERSION:+.$LIQUIDSOAP_VERSION} taglib mad lame vorbis cry samplerate ssl ffmpeg jemalloc"
 
 # add user for liquidsoap and create necessary directories
-RUN useradd -m -r -u 999 -s /bin/bash -g broadcast audio && \
+RUN useradd -m -r -u 999 -s /bin/bash -g audio broadcast && \
     mkdir /etc/liquidsoap /music && \
     chown -R broadcast:audio /etc/liquidsoap /music
 
